@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package nickax; //not sure what this is doing in the context (hence the ridiculous name)
+
+
+option go_package = "/protobuff";
+
+message status {
+  string text = 1;
+}
+
+service upsert{
+  rpc upsert (seaPort) returns (status) {}
+}
+
+message seaPort {
+    string name = 1;
+    repeated float coordinates = 2;
+    string city = 3;
+    string province = 4;
+    string country = 5;
+    repeated string alias = 6;
+    repeated string regions = 7;
+    string timezone  = 8;
+    repeated string unlocs = 9;
+    string code = 10;
+    
+  }
+  
+// we would never really send the entire DB but ...
+message seaPorts {
+  repeated seaPort seaPorts = 1;
+}
+
